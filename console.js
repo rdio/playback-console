@@ -1,4 +1,4 @@
-var console = null;
+var $console = null;
 var in_command = false;
 
 function validate(line) {
@@ -34,7 +34,7 @@ function handle(line) {
 }
 
 $(document).ready(function() {
-  console = $('#console').console({
+  $console = $('#console').console({
     promptLabel: '>>> ',
     autofocus: true,
     commandValidate: validate,
@@ -43,11 +43,11 @@ $(document).ready(function() {
 
   var playbackToken = tokens[document.domain];
   if (playbackToken == null) {
-    console.inner.prepend($('<div>').text('ERROR: no playback token found for: '+document.domain).addClass('error'));
+    $console.inner.prepend($('<div>').text('ERROR: no playback token found for: '+document.domain).addClass('error'));
     return;
   }
 
-  $('#welcome-text').detach().prependTo(console.inner).removeAttr('id');
+  $('#welcome-text').detach().prependTo($console.inner).removeAttr('id');
 
   var flashvars = {
     'playbackToken': playbackToken, // from token.js
@@ -63,15 +63,15 @@ $(document).ready(function() {
       1, 1, '9.0.0', 'expressInstall.swf', flashvars, params, attributes);
 
 
+  $('#console textarea').on('focusin', function() {
+    setTimeout(scrollDown,0);
+  });
 });
 
-$(window).click(function() {
-  $('#console').click();
-  // TODO: clicking causes a scroll to the top
-});
+$('html').click(function() { $('#console').click() });
 
 function logCallback(message) {
-  var prompt = $('.jquery-console-prompt-box', console.inner).last();
+  var prompt = $('.jquery-console-prompt-box', $console.inner).last();
   var div = $('<div></div>').text(message).addClass('callback');
   if (in_command) {
     div.insertAfter(prompt);

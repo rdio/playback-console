@@ -218,10 +218,13 @@
 
         ////////////////////////////////////////////////////////////////////////
         // Handle setting focus
-        container.click(function(){
+        extern.focus = function() {
             inner.addClass('jquery-console-focus');
             inner.removeClass('jquery-console-nofocus');
             typer.focus();
+        }
+        container.click(function(){
+            extern.focus();
             scrollToBottom();
             return false;
         });
@@ -409,6 +412,7 @@
 
         // Scroll to the bottom of the view
         function scrollToBottom() {
+          return;
             if (jQuery.fn.jquery > "1.6") {
                 inner.prop({ scrollTop: inner.prop("scrollHeight") });
             }
