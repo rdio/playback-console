@@ -1,4 +1,5 @@
 var console = null;
+var in_command = false;
 
 function validate(line) {
   return line != '';
@@ -9,8 +10,8 @@ function scrollDown() {
 }
 
 function handle(line) {
-  // TODO: make callbacks that come during command execution appear below the command that was called
-  
+  in_command = true;
+  setTimeout(function() {in_command = false;}, 0);
   setTimeout(scrollDown, 0);
   try {
     var swf = $('#rdio_api').get(0);
@@ -70,7 +71,13 @@ $(window).click(function() {
 });
 
 function logCallback(message) {
-  $('<div></div>').text(message).addClass('callback').insertBefore($('.jquery-console-prompt-box', console.inner));
+  var prompt = $('.jquery-console-prompt-box', console.inner).last();
+  var div = $('<div></div>').text(message).addClass('callback');
+  if (in_command) {
+    div.insertAfter(prompt);
+  } else {
+    div.insertBefore(prompt);
+  }
   scrollDown();
 }
 function stringify(o) {
