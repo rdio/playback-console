@@ -1,0 +1,47 @@
+/* colors from: http://ethanschoonover.com/solarized#the-values */
+
+body {
+  font-size: 18pt;
+  background-color: #002b36;
+  color: #fdf6e3;
+  font-family: Anonymous Pro, monospace;
+  word-wrap: break-word;
+}
+
+a {
+  color: inherit;
+  font-style: italic;
+}
+
+#rdio_api {
+  position: absolute;
+  top: 100px;
+}
+
+#welcome-text {
+  display: none;
+}
+
+#console {
+  /*
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  */
+}
+
+.result {
+  color: #b58900;
+}
+
+.error {
+  color: #dc322f
+}
+
+.callback {
+  color: #268bd2;
+}
+
+.jquery-console-focus .jquery-console-cursor {
+  background-color: #93a1a1;
+}

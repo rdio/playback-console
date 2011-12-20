@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="Content-Type" content="text/html; charset=UTF-8">
+  <title>Rdio Playback Console</title>
+  <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Anonymous+Pro:400,400italic,700,700italic">
+  <link type="text/css" rel="stylesheet" href="console.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+  <script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="jquery.console.js"></script>
+  <script type="text/javascript" src="tokens.js"></script>
+  <script type="text/javascript" src="console.js"></script>
+</head>
+<body>
+<div id="rdio_api"></div>
+<div id="console"></div>
+<div id="welcome-text">
+  <div><b>Rdio Web Playback Console</b></div>
+  <div>See <a href="http://developer.rdio.com/docs/read/Web_Playback_API">http://developer.rdio.com/docs/read/Web_Playback_API</a> for API documentation.</div>
+  <div><i>Methods include:</i> rdio_play([key, [options]), rdio_pause(), rdio_stop(),
+    rdio_next([superSkip]), rdio_previous(), rdio_seek(position),
+    rdio_setShuffle(shuffle), rdio_setRepeat(mode), rdio_queue(key, [options]),
+    rdio_setVolume(volume), rdio_setMute(mute),
+    rdio_playQueuedTrack(position, offset), rdio_moveQueuedSource(from, to),
+    rdio_clearQueue(), rdio_setCurrentPosition(sourceIndex), rdio_removeFromQueue(sourceIndex),
+    rdio_sendState(), rdio_startFrequencyAnalyzer(options), rdio_stopFrequencyAnalyzer()</div>
+  <div>&nbsp;</div>
+</div>
+</body>
+</html>
