@@ -7,6 +7,7 @@ function validate(line) {
 
 function scrollDown() {
   $('body').scrollTop($('body').innerHeight());
+  window.scroll(0,$('body').innerHeight());
 }
 
 function handle(line) {
@@ -41,6 +42,18 @@ $(document).ready(function() {
     commandHandle: handle
   });
 
+  $console.typer.insertAfter($console.inner).wrap($('<form>')).css({
+    'position':'relative',
+    'top':'-1px',
+    'height':'1px',
+    'resize': 'none',
+    'font-size':'1px',
+    'line-height': '1px',
+    'margin': 0,
+    'padding': 0,
+    'border': 0
+  }).parent().css('margin-top', '-20px');
+
   var playbackToken = tokens[document.domain];
   if (playbackToken == null) {
     $console.inner.prepend($('<div>').text('ERROR: no playback token found for: '+document.domain).addClass('error'));
@@ -61,14 +74,9 @@ $(document).ready(function() {
   swfobject.embedSWF('http://www.rdio.com/api/swf/', // the location of the Rdio Playback API SWF
       'rdio_api', // the ID of the element that will be replaced with the SWF
       1, 1, '9.0.0', 'expressInstall.swf', flashvars, params, attributes);
-
-
-  $('#console textarea').on('focusin', function() {
-    setTimeout(scrollDown,0);
-  });
 });
 
-$('html').click(function() { $('#console').click() });
+$('html').click(function() { $('#console').click(); });
 
 function logCallback(message) {
   var prompt = $('.jquery-console-prompt-box', $console.inner).last();
